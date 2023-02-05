@@ -16,7 +16,7 @@ else if (name == "Ewa" && age == 33)
 }
 else
 {
-    Console.WriteLine("Nie spełnia żadnych wymaganych kryteriów");
+    Console.WriteLine("Nie spełnia wymaganych w zadaniu kryteriów");
 }
 
 
