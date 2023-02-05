@@ -1,25 +1,15 @@
-﻿string name = "Ewa";
-bool isMan = false;
-int age = 44;
+﻿int number = 1568578985;
+string numberAsString = number.ToString();
+char[] letters = numberAsString.ToCharArray();
 
-if (isMan == true && age < 18)
+int[] memo = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+foreach(var elem in letters)
 {
-    Console.WriteLine("Niepełnoletni Mężczyzna");
-}
-else if (isMan == false && age < 30)
-{
-    Console.WriteLine("Kobieta poniżej 30 lat");
-}
-else if (name == "Ewa" && age == 33)
-{
-    Console.WriteLine("Ewa, lat 33");
-}
-else
-{
-    Console.WriteLine("Nie spełnia wymaganych w zadaniu kryteriów");
+     memo[(int)char.GetNumericValue(elem)]++;
 }
 
-
-
-
-
+for (int i = 0; i < memo.Length; i++)
+{ 
+    Console.WriteLine(i + "=>" + memo[i]);
+}
