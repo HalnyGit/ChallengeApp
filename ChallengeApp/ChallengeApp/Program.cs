@@ -27,14 +27,14 @@ employees.Add(employee1);
 employees.Add(employee2); 
 employees.Add(employee3);
 
-List<int> bestResults = new List<int>();
+List<int> employeeResults = new List<int>();
 
 foreach (Employee employee in employees)
 {
-    bestResults.Add(employee.Result);
+    employeeResults.Add(employee.Result);
 }
 
-int bestResult = bestResults.Max();
+int bestResult = employeeResults.Max();
 
 List<Employee> topEmployee = new List<Employee>();
 
