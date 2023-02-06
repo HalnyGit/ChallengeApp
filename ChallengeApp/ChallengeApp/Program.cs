@@ -3,6 +3,7 @@
 Employee employee1 = new Employee("Adam", "Kowalski");
 Employee employee2 = new Employee("Ewa", "Nowak");
 Employee employee3 = new Employee("Michał", "Wiśniewski");
+Employee badEmployee = new Employee("Ozzy", "Osbourne");
 
 employee1.AddScore(1);
 employee1.AddScore(4);
@@ -22,10 +23,14 @@ employee3.AddScore(9);
 employee3.AddScore(6);
 employee3.AddScore(5);
 
+badEmployee.AddScore(1);
+badEmployee.AddScore(-2);
+
 List<Employee> employees = new List<Employee>();
 employees.Add(employee1);
-employees.Add(employee2); 
+employees.Add(employee2);
 employees.Add(employee3);
+employees.Add(badEmployee);
 
 List<int> employeesResults = new List<int>();
 
@@ -47,7 +52,9 @@ foreach (Employee employee in employees)
 }
 
 Console.WriteLine("Pracownik/pracownicy z najwyższymi wynikami:");
+
 foreach (Employee employee in topEmployee)
 {
     Console.WriteLine(employee.Name + " " + employee.Surname + " " + employee.Result);
 }
+Console.WriteLine("Najniższy wynik wśród pracowników:" + " " + badEmployee.Result);
