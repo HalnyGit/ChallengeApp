@@ -9,9 +9,9 @@ namespace ChallengeApp.Tests
             var employee = new Employee("Ewa", "Nowak");
 
             //act
-            employee.AddScore(5);
-            employee.AddScore(2);
-            int totalPoints = employee.Result;
+            employee.AddGrade(5);
+            employee.AddGrade(2);
+            float totalPoints = employee.Result;
 
             //assert
             Assert.That(totalPoints, Is.EqualTo(7));
@@ -23,10 +23,10 @@ namespace ChallengeApp.Tests
             var employee = new Employee("Ewa", "Nowak");
 
             //act
-            employee.AddScore(5);
-            employee.AddScore(2);
-            employee.AddScore(-7);
-            int totalPoints = employee.Result;
+            employee.AddGrade(5);
+            employee.AddGrade(2);
+            employee.AddGrade(-7);
+            float totalPoints = employee.Result;
 
             //assert
             Assert.Zero(totalPoints);
@@ -38,10 +38,10 @@ namespace ChallengeApp.Tests
             var badEmployee = new Employee("Ewa", "Nowak");
 
             //act
-            badEmployee.AddScore(5);
-            badEmployee.AddScore(2);
-            badEmployee.AddScore(-10);
-            int totalPoints = badEmployee.Result;
+            badEmployee.AddGrade(5);
+            badEmployee.AddGrade(2);
+            badEmployee.AddGrade(-10);
+            float totalPoints = badEmployee.Result;
 
             //assert
             Assert.Negative(totalPoints);

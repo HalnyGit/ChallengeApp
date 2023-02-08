@@ -53,9 +53,9 @@
             Assert.AreNotEqual(user1, user2);
         }
 
-        private User GetUser(string login, string password)
+        private Employee GetUser(string name, string surname)
         {
-            return new User(login, password);
+            return new Employee(name, surname);
         }
     }
 }
