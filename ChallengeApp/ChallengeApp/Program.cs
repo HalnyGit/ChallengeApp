@@ -9,9 +9,18 @@ employee.AddGrade(46L);
 employee.AddGrade(64d);
 employee.AddGrade(80m);
 employee.AddGrade(3.41E+40);
+employee.AddGrade(90);
 
-var stats = employee.GetStatistics();
+var stats1 = employee.GetStatisticsWithFor();
+var stats2 = employee.GetStatisticsWithFor();
+var stats3 = employee.GetStatisticsWithDoWhile();
+var stats4 = employee.GetStatisticsWithWhile();
 
-Console.WriteLine($"Average: {stats.Average:N2}");
-Console.WriteLine($"Max: {stats.Max}");
-Console.WriteLine($"Min: {stats.Min}");
+Statistics[] stats = {stats1, stats2, stats3, stats4};
+
+foreach(Statistics stat in stats)
+{ 
+Console.WriteLine($"Average: {stat.Average:N2}");
+Console.WriteLine($"Max: {stat.Max}");
+Console.WriteLine($"Min: {stat.Min}");
+}
