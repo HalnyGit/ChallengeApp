@@ -16,35 +16,49 @@ namespace ChallengeApp.Tests
             //assert
             Assert.That(totalPoints, Is.EqualTo(7));
         }
+
         [Test]
-        public void CheckSubstructionOfPoints()
+        public void CheckAddGradeAsChar()
         {
             // arrange
-            var employee = new Employee("Ewa", "Nowak");
+            var employee = new Employee();
 
             //act
-            employee.AddGrade(5);
+            employee.AddGrade('a');
             employee.AddGrade(2);
-            employee.AddGrade(-7);
             float totalPoints = employee.Result;
 
             //assert
-            Assert.Zero(totalPoints);
+            Assert.That(totalPoints, Is.EqualTo(102));
         }
+
         [Test]
-        public void CheckSubstructionOfPointsBelowZero()
+        public void CheckAddGradeAsIncorrectChar()
         {
             // arrange
-            var badEmployee = new Employee("Ewa", "Nowak");
+            var employee = new Employee();
 
             //act
-            badEmployee.AddGrade(5);
-            badEmployee.AddGrade(2);
-            badEmployee.AddGrade(-10);
-            float totalPoints = badEmployee.Result;
+            employee.AddGrade('g');
+            employee.AddGrade(2);
+            float totalPoints = employee.Result;
 
             //assert
-            Assert.Negative(totalPoints);
+            Assert.That(totalPoints, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void CheckAverageLetter()
+        {
+            // arrange
+            var employee = new Employee();
+
+            //act
+            employee.AddGrade(81);
+            char avgLetter = employee.GetStatistics().AverageLetter;
+
+            //assert
+            Assert.That(avgLetter, Is.EqualTo('A'));
         }
     }
 }

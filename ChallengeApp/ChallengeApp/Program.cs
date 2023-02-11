@@ -1,26 +1,26 @@
 ﻿using ChallengeApp;
 
-Employee employee = new Employee("Adam", "Kowalski");
+Console.WriteLine("Witamy w Programie XYZ do 0ceny pracownika");
+Console.WriteLine("==========================================");
+Console.WriteLine();
 
-employee.AddGrade("1");
-employee.AddGrade(2);
-employee.AddGrade(12.3);
-employee.AddGrade(46L);
-employee.AddGrade(64d);
-employee.AddGrade(80m);
-employee.AddGrade(3.41E+40);
-employee.AddGrade(90);
+Employee employee = new Employee();
 
-var stats1 = employee.GetStatisticsWithFor();
-var stats2 = employee.GetStatisticsWithFor();
-var stats3 = employee.GetStatisticsWithDoWhile();
-var stats4 = employee.GetStatisticsWithWhile();
-
-Statistics[] stats = {stats1, stats2, stats3, stats4};
-
-foreach(Statistics stat in stats)
-{ 
-Console.WriteLine($"Average: {stat.Average:N2}");
-Console.WriteLine($"Max: {stat.Max}");
-Console.WriteLine($"Min: {stat.Min}");
+while(true)
+{
+    Console.WriteLine("""Podaj kolejną ocenę pracownika lub "q" - żeby wyjść z modułu wprowadzania ocen i przejść do podsumowania""");
+    var input = Console.ReadLine();
+    if(input == "q")
+    {
+        break;
+    }
+    employee.AddGrade(input);
 }
+
+var statistics = employee.GetStatistics();
+Console.WriteLine("==========================================");
+Console.WriteLine($"Average Letter: {statistics.AverageLetter}");
+Console.WriteLine($"Average: {statistics.Average}");
+Console.WriteLine($"Min: {statistics.Min}");
+Console.WriteLine($"Max: {statistics.Max}");
+
