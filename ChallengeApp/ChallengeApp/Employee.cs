@@ -14,6 +14,7 @@ namespace ChallengeApp
         }
         public string Name { get; private set; }
         public string Surname { get; private set; }
+        
         public float Result
         {
             get
@@ -21,6 +22,7 @@ namespace ChallengeApp
                 return this.grades.Sum();
             }
         }
+
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -32,6 +34,7 @@ namespace ChallengeApp
                 Console.WriteLine("Wartość musi być w przedziale od 0 do 100");
             }   
         }
+
         public void AddGrade(string grade)
         {
             if(float.TryParse(grade, out float result))
@@ -43,16 +46,19 @@ namespace ChallengeApp
                 Console.WriteLine("Invalid value");
             }
         }
+
         public void AddGrade(long grade)
         {
                 float result = grade;
                 this.AddGrade(result);
         }
+
         public void AddGrade(double grade)
         {
                 float result = (float)grade;
                 this.AddGrade(result);
         }
+
         public void AddGrade(decimal grade)
         {
                 float result = (float)grade;
