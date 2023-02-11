@@ -32,7 +32,8 @@
             }
             else
             {
-                Console.WriteLine("Wartość musi być w przedziale od 0 do 100");
+                throw new Exception("Wartość musi być w przedziale od 0 do 100");
+                //Console.WriteLine("Wartość musi być w przedziale od 0 do 100");
             }   
         }
 
@@ -48,7 +49,8 @@
             }
             else
             {
-                Console.WriteLine("Invalid value");
+                throw new Exception("Wprowadzono niepoprawną wartość");
+                //Console.WriteLine("Wprowadzono niepoprawną wartość");
             }
         }
 
@@ -77,8 +79,9 @@
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Niepoprawna litera");
-                    break;
+                    throw new Exception("Niepoprawna litera");
+                    //Console.WriteLine("Niepoprawna litera");
+                    // break; przy throw juz niepotrzebny break
             }
         }
 
