@@ -1,4 +1,7 @@
-﻿namespace ChallengeApp
+﻿using System.ComponentModel;
+using System.Reflection.Metadata.Ecma335;
+
+namespace ChallengeApp
 {
     public class Employee
     {
@@ -20,7 +23,40 @@
         }
         public void AddGrade(float grade)
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Wartość musi być w przedziale od 0 do 100");
+            }   
+        }
+        public void AddGrade(string grade)
+        {
+            if(float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid value");
+            }
+        }
+        public void AddGrade(long grade)
+        {
+                float result = grade;
+                this.AddGrade(result);
+        }
+        public void AddGrade(double grade)
+        {
+                float result = (float)grade;
+                this.AddGrade(result);
+        }
+        public void AddGrade(decimal grade)
+        {
+                float result = (float)grade;
+                this.AddGrade(result);
         }
 
         public Statistics GetStatistics()
