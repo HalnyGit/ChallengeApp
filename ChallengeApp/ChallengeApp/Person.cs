@@ -1,6 +1,6 @@
 ﻿namespace ChallengeApp
 {
-    public abstract class Person : System.Object
+    public abstract class Person
     {
 
         public Person(string name, string surname, char gender)

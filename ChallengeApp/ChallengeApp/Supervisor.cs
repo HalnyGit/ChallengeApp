@@ -1,13 +1,15 @@
-﻿namespace ChallengeApp
+﻿
+
+namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public Supervisor(string name, string surname)
         {
             this.Name = name;
-            this.Surname= surname; 
+            this.Surname = surname;
         }
 
         public string Name { get; private set; }
@@ -30,33 +32,67 @@
             else
             {
                 throw new Exception("Wartość musi być w przedziale od 0 do 100");
-                //Console.WriteLine("Wartość musi być w przedziale od 0 do 100");
-            }   
+            }
         }
 
         public void AddGrade(string grade)
-        {
-            if(float.TryParse(grade, out float result))
+        { 
+            int addOnFactor = 0;
+ 
+            if (grade.Contains("+"))
             {
-                this.AddGrade(result);
+                addOnFactor = 5;    
             }
-            else if(char.TryParse(grade, out char character))
+            else if (grade.Contains("-"))
+            {
+                addOnFactor = -5;
+            }
+
+            char[] charsToTrim = { '+', '-' };
+            grade = grade.Trim(charsToTrim);
+
+            if (float.TryParse(grade, out float result))
+            {
+                switch (result)
+                {
+                    case 6:
+                        this.grades.Add(100 + addOnFactor);
+                        break;
+                    case 5:
+                        this.grades.Add(80 + addOnFactor);
+                        break;
+                    case 4:
+                        this.grades.Add(60 + addOnFactor);
+                        break;
+                    case 3:
+                        this.grades.Add(40 + addOnFactor);
+                        break;
+                    case 2:
+                        this.grades.Add(20 + addOnFactor);
+                        break;
+                    case 1:
+                        this.grades.Add(0 + addOnFactor);
+                        break;
+                    default:
+                        throw new Exception("Niepoprawna litera");
+                }
+            }
+            else if (char.TryParse(grade, out char character))
             {
                 this.AddGrade(character);
             }
             else
             {
                 throw new Exception("Wprowadzono niepoprawną wartość");
-                //Console.WriteLine("Wprowadzono niepoprawną wartość");
             }
         }
 
         public void AddGrade(char grade)
         {
-            switch (grade) 
-            { 
-                case'A':
-                case'a':
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
                     this.grades.Add(100);
                     break;
                 case 'B':
@@ -77,27 +113,25 @@
                     break;
                 default:
                     throw new Exception("Niepoprawna litera");
-                    //Console.WriteLine("Niepoprawna litera");
-                    // break; przy throw juz niepotrzebny break
             }
         }
 
         public void AddGrade(long grade)
         {
-                float result = grade;
-                this.AddGrade(result);
+            float result = grade;
+            this.AddGrade(result);
         }
 
         public void AddGrade(double grade)
         {
-                float result = (float)grade;
-                this.AddGrade(result);
+            float result = (float)grade;
+            this.AddGrade(result);
         }
 
         public void AddGrade(decimal grade)
         {
-                float result = (float)grade;
-                this.AddGrade(result);
+            float result = (float)grade;
+            this.AddGrade(result);
         }
 
         public Statistics GetStatistics()
@@ -107,7 +141,7 @@
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
 
-            foreach( var grade in this.grades)
+            foreach (var grade in this.grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
@@ -115,9 +149,9 @@
             }
 
             statistics.Average = (float)Math.Round(statistics.Average / this.grades.Count, 2);
-            
-          
-            switch(statistics.Average)
+
+
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';
@@ -139,3 +173,4 @@
         }
     }
 }
+
