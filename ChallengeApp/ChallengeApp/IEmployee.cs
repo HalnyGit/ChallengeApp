@@ -2,7 +2,6 @@
 {
     public interface IEmployee
     {
-
         string Name { get; }
         string Surname { get; }
 
@@ -14,7 +13,5 @@
         void AddGrade(decimal grade);
 
         Statistics GetStatistics();
-
-
     }
 }

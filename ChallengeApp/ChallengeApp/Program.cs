@@ -4,10 +4,10 @@ Console.WriteLine("Witamy w Programie XYZ do oceny pracownika");
 Console.WriteLine("==========================================");
 Console.WriteLine();
 
-Supervisor supervisor = new Supervisor("Adam", "Nowak");
+EmployeeInFile employee = new EmployeeInFile("Adam", "Nowak");
 
-Console.WriteLine(supervisor.Name);  
-Console.WriteLine(supervisor.Surname);
+Console.WriteLine(employee.Name);  
+Console.WriteLine(employee.Surname);
 
 while (true)
 {
@@ -20,7 +20,7 @@ while (true)
 
     try
     {
-        supervisor.AddGrade(input);
+        employee.AddGrade(input);
     }
     catch (Exception ex)
     {
@@ -28,7 +28,7 @@ while (true)
     }
 }
 
-var statistics = supervisor.GetStatistics();
+var statistics = employee.GetStatistics();
 Console.WriteLine("==========================================");
 Console.WriteLine($"Average Letter: {statistics.AverageLetter}");
 Console.WriteLine($"Average: {statistics.Average}");
