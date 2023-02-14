@@ -110,6 +110,7 @@ namespace ChallengeApp
                         statistics.Min = Math.Min(statistics.Min, number);
                         statistics.Average += number;
                         counter++;
+                        line = reader.ReadLine();
                     }
 
                     statistics.Average = (float)Math.Round(statistics.Average / counter, 2);
