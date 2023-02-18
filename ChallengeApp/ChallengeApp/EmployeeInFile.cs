@@ -1,8 +1,4 @@
-﻿using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Reflection;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
@@ -14,6 +10,7 @@ namespace ChallengeApp
         {
         }
 
+        public override event GradeAddedDelegate GradeAdded;
 
         public override void AddGrade(float grade)
         {
@@ -22,7 +19,12 @@ namespace ChallengeApp
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
-                }
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
+                }                
             }
             else
             {
@@ -135,7 +137,7 @@ namespace ChallengeApp
                     }
                 }
             }
-            return statistics;
+         return statistics;
         }
     }
 }

@@ -5,6 +5,12 @@ Console.WriteLine("==========================================");
 Console.WriteLine();
 
 EmployeeInFile employee = new EmployeeInFile("Adam", "Nowak");
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
 
 Console.WriteLine(employee.Name);  
 Console.WriteLine(employee.Surname);

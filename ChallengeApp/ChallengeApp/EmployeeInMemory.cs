@@ -2,10 +2,13 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+
         public EmployeeInMemory(string name, string surname)
             : base(name, surname)
         {
         }
+
+        public override event GradeAddedDelegate GradeAdded;
 
         public override void SayHello()
         {
@@ -20,6 +23,11 @@
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -48,19 +56,19 @@
             switch (grade)
             {
                 case 'A' or 'a':
-                    this.grades.Add(100);
+                    this.AddGrade(100);
                     break;
                 case 'B' or 'b':
-                    this.grades.Add(80);
+                    this.AddGrade(80);
                     break;
                 case 'C' or 'c':
-                    this.grades.Add(60);
+                    this.AddGrade(60);
                     break;
                 case 'D' or 'd':
-                    this.grades.Add(40);
+                    this.AddGrade(40);
                     break;
                 case 'E' or 'e':
-                    this.grades.Add(20);
+                    this.AddGrade(20);
                     break;
                 default:
                     throw new Exception("Niepoprawna litera");

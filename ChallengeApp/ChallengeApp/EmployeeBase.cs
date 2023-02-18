@@ -16,6 +16,8 @@
             Console.WriteLine($"Hello! I am {Name} {Surname}");
         }
 
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+        public abstract event GradeAddedDelegate GradeAdded;
 
         public abstract void AddGrade(float grade);
 
