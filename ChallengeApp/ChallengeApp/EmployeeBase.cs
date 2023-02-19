@@ -11,10 +11,10 @@
 
         public string Surname { get; private set; }
 
-        public virtual void SayHello()
-        {
-            Console.WriteLine($"Hello! I am {Name} {Surname}");
-        }
+        //public virtual void SayHello()
+        //{
+        //    Console.WriteLine($"Hello! I am {Name} {Surname}");
+        //}
 
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
         public abstract event GradeAddedDelegate GradeAdded;
